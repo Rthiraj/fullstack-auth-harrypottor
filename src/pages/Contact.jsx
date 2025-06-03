@@ -79,7 +79,189 @@
 
 // export default Contact;
 
-import React, { useRef, useState, useEffect } from "react";
+// import React, { useRef, useState, useEffect } from "react";
+// import emailjs from "@emailjs/browser";
+// import { motion } from "framer-motion";
+// import {
+//   EnvelopeIcon,
+//   PhoneIcon,
+//   MapPinIcon,
+// } from "@heroicons/react/24/outline";
+
+// const houseThemes = {
+//   gryffindor: {
+//     bg: "#7F0909",
+//     color: "#FFD700",
+//     font: "'Creepster', cursive",
+//     icon: "🦁",
+//   },
+//   slytherin: {
+//     bg: "#1A472A",
+//     color: "#AAAAAA",
+//     font: "'Creepster', cursive",
+//     icon: "🐍",
+//   },
+//   ravenclaw: {
+//     bg: "#0E1A40",
+//     color: "#946B2D",
+//     font: "'Creepster', cursive",
+//     icon: "🦅",
+//   },
+//   hufflepuff: {
+//     bg: "#FFDB00",
+//     color: "#000000",
+//     font: "'Creepster', cursive",
+//     icon: "🦡",
+//   },
+// };
+
+// const Contact = () => {
+//   const form = useRef();
+//   const [status, setStatus] = useState("");
+//   const [theme, setTheme] = useState("gryffindor");
+
+//   const sendEmail = (e) => {
+//     e.preventDefault();
+//     setStatus("Sending...");
+
+//     emailjs
+//       .sendForm(
+//         "service_rhrpttu",
+//         "template_xfjniut",
+//         form.current,
+//         "dGQSYEFSl0rEKk11d"
+//       )
+//       .then(
+//         () => {
+//           setStatus("🪄 Message sent successfully!");
+//           form.current.reset();
+//         },
+//         () => {
+//           setStatus("❌ Failed to send message.");
+//         }
+//       );
+//   };
+
+//   const toggleTheme = () => {
+//     const nextThemes = Object.keys(houseThemes);
+//     const nextIndex =
+//       (nextThemes.indexOf(theme) + 1) % nextThemes.length;
+//     setTheme(nextThemes[nextIndex]);
+//   };
+
+//   const currentTheme = houseThemes[theme];
+
+//   return (
+//     <motion.div
+//       className="p-6 max-w-lg mx-auto shadow-xl rounded-xl space-y-6 relative"
+//       initial={{ opacity: 0, y: 40 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.6 }}
+//       style={{
+//         backgroundColor: currentTheme.bg,
+//         color: currentTheme.color,
+//         fontFamily: currentTheme.font,
+//         border: `4px solid ${currentTheme.color}`,
+//         boxShadow: `0 0 12px ${currentTheme.color}`,
+//       }}
+//     >
+//       {/* Theme Toggle Button */}
+//       <button
+//         onClick={toggleTheme}
+//         className="btn btn-sm btn-outline absolute top-4 right-4"
+//         title="Toggle House Theme"
+//         style={{
+//           borderColor: currentTheme.color,
+//           color: currentTheme.color,
+//           fontSize: "1.2rem",
+//         }}
+//       >
+//         {currentTheme.icon}
+//       </button>
+
+//       <h2 className="text-3xl font-bold text-center">Contact Us</h2>
+
+//       {/* Contact Info */}
+//       <div className="space-y-4">
+//         <div className="flex items-center space-x-3">
+//           <EnvelopeIcon className="h-6 w-6" />
+//           <a href="mailto:aarthi.rp.17@gmail.com" className="link link-hover">
+//             aarthi.rp.17@gmail.com
+//           </a>
+//         </div>
+//         <div className="flex items-center space-x-3">
+//           <PhoneIcon className="h-6 w-6" />
+//           <a href="tel:+918526737908" className="link link-hover">
+//             +91 8526737908
+//           </a>
+//         </div>
+//         <div className="flex items-center space-x-3">
+//           <MapPinIcon className="h-6 w-6" />
+//           <p>Saravanampatti, Coimbatore, Tamil Nadu</p>
+//         </div>
+//       </div>
+
+//       {/* Contact Form */}
+//       <form ref={form} onSubmit={sendEmail} className="space-y-4">
+//         <input
+//           type="text"
+//           name="user_name"
+//           placeholder="Your Name"
+//           className="input input-bordered w-full"
+//           required
+//           style={{
+//             backgroundColor: "transparent",
+//             borderColor: currentTheme.color,
+//             color: currentTheme.color,
+//           }}
+//         />
+//         <input
+//           type="email"
+//           name="user_email"
+//           placeholder="Your Email"
+//           className="input input-bordered w-full"
+//           required
+//           style={{
+//             backgroundColor: "transparent",
+//             borderColor: currentTheme.color,
+//             color: currentTheme.color,
+//           }}
+//         />
+//         <textarea
+//           name="message"
+//           className="textarea textarea-bordered w-full"
+//           placeholder="Your Message"
+//           rows={4}
+//           required
+//           style={{
+//             backgroundColor: "transparent",
+//             borderColor: currentTheme.color,
+//             color: currentTheme.color,
+//           }}
+//         ></textarea>
+//         <button
+//           type="submit"
+//           className="btn w-full"
+//           style={{
+//             backgroundColor: currentTheme.color,
+//             color: currentTheme.bg,
+//             fontWeight: "bold",
+//             fontFamily: currentTheme.font,
+//           }}
+//         >
+//           Send Message
+//         </button>
+//         {status && (
+//           <p className="text-center text-sm mt-2">{status}</p>
+//         )}
+//       </form>
+//     </motion.div>
+//   );
+// };
+
+// export default Contact;
+
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import {
@@ -144,118 +326,126 @@ const Contact = () => {
 
   const toggleTheme = () => {
     const nextThemes = Object.keys(houseThemes);
-    const nextIndex =
-      (nextThemes.indexOf(theme) + 1) % nextThemes.length;
+    const nextIndex = (nextThemes.indexOf(theme) + 1) % nextThemes.length;
     setTheme(nextThemes[nextIndex]);
   };
 
   const currentTheme = houseThemes[theme];
 
   return (
-    <motion.div
-      className="p-6 max-w-lg mx-auto shadow-xl rounded-xl space-y-6 relative"
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+    <div
       style={{
         backgroundColor: currentTheme.bg,
-        color: currentTheme.color,
+        minHeight: "100vh",
+        padding: "2rem",
         fontFamily: currentTheme.font,
-        border: `4px solid ${currentTheme.color}`,
-        boxShadow: `0 0 12px ${currentTheme.color}`,
       }}
     >
-      {/* Theme Toggle Button */}
-      <button
-        onClick={toggleTheme}
-        className="btn btn-sm btn-outline absolute top-4 right-4"
-        title="Toggle House Theme"
+      <motion.div
+        className="p-6 max-w-lg mx-auto shadow-xl rounded-xl space-y-6 relative"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
         style={{
-          borderColor: currentTheme.color,
+          backgroundColor: currentTheme.bg,
           color: currentTheme.color,
-          fontSize: "1.2rem",
+          fontFamily: currentTheme.font,
+          border: `4px solid ${currentTheme.color}`,
+          boxShadow: `0 0 12px ${currentTheme.color}`,
         }}
       >
-        {currentTheme.icon}
-      </button>
-
-      <h2 className="text-3xl font-bold text-center">Contact Us</h2>
-
-      {/* Contact Info */}
-      <div className="space-y-4">
-        <div className="flex items-center space-x-3">
-          <EnvelopeIcon className="h-6 w-6" />
-          <a href="mailto:aarthi.rp.17@gmail.com" className="link link-hover">
-            aarthi.rp.17@gmail.com
-          </a>
-        </div>
-        <div className="flex items-center space-x-3">
-          <PhoneIcon className="h-6 w-6" />
-          <a href="tel:+918526737908" className="link link-hover">
-            +91 8526737908
-          </a>
-        </div>
-        <div className="flex items-center space-x-3">
-          <MapPinIcon className="h-6 w-6" />
-          <p>Saravanampatti, Coimbatore, Tamil Nadu</p>
-        </div>
-      </div>
-
-      {/* Contact Form */}
-      <form ref={form} onSubmit={sendEmail} className="space-y-4">
-        <input
-          type="text"
-          name="user_name"
-          placeholder="Your Name"
-          className="input input-bordered w-full"
-          required
-          style={{
-            backgroundColor: "transparent",
-            borderColor: currentTheme.color,
-            color: currentTheme.color,
-          }}
-        />
-        <input
-          type="email"
-          name="user_email"
-          placeholder="Your Email"
-          className="input input-bordered w-full"
-          required
-          style={{
-            backgroundColor: "transparent",
-            borderColor: currentTheme.color,
-            color: currentTheme.color,
-          }}
-        />
-        <textarea
-          name="message"
-          className="textarea textarea-bordered w-full"
-          placeholder="Your Message"
-          rows={4}
-          required
-          style={{
-            backgroundColor: "transparent",
-            borderColor: currentTheme.color,
-            color: currentTheme.color,
-          }}
-        ></textarea>
+        {/* Theme Toggle Button */}
         <button
-          type="submit"
-          className="btn w-full"
+          onClick={toggleTheme}
+          className="btn btn-sm btn-outline absolute top-4 right-4"
+          title="Toggle House Theme"
           style={{
-            backgroundColor: currentTheme.color,
-            color: currentTheme.bg,
-            fontWeight: "bold",
-            fontFamily: currentTheme.font,
+            borderColor: currentTheme.color,
+            color: currentTheme.color,
+            fontSize: "1.2rem",
           }}
         >
-          Send Message
+          {currentTheme.icon}
         </button>
-        {status && (
-          <p className="text-center text-sm mt-2">{status}</p>
-        )}
-      </form>
-    </motion.div>
+
+        <h2 className="text-3xl font-bold text-center">Contact Us</h2>
+
+        {/* Contact Info */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-3">
+            <EnvelopeIcon className="h-6 w-6" />
+            <a href="mailto:aarthi.rp.17@gmail.com" className="link link-hover">
+              aarthi.rp.17@gmail.com
+            </a>
+          </div>
+          <div className="flex items-center space-x-3">
+            <PhoneIcon className="h-6 w-6" />
+            <a href="tel:+918526737908" className="link link-hover">
+              +91 8526737908
+            </a>
+          </div>
+          <div className="flex items-center space-x-3">
+            <MapPinIcon className="h-6 w-6" />
+            <p>Saravanampatti, Coimbatore, Tamil Nadu</p>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <form ref={form} onSubmit={sendEmail} className="space-y-4">
+          <input
+            type="text"
+            name="user_name"
+            placeholder="Your Name"
+            className="input input-bordered w-full"
+            required
+            style={{
+              backgroundColor: "transparent",
+              borderColor: currentTheme.color,
+              color: currentTheme.color,
+            }}
+          />
+          <input
+            type="email"
+            name="user_email"
+            placeholder="Your Email"
+            className="input input-bordered w-full"
+            required
+            style={{
+              backgroundColor: "transparent",
+              borderColor: currentTheme.color,
+              color: currentTheme.color,
+            }}
+          />
+          <textarea
+            name="message"
+            className="textarea textarea-bordered w-full"
+            placeholder="Your Message"
+            rows={4}
+            required
+            style={{
+              backgroundColor: "transparent",
+              borderColor: currentTheme.color,
+              color: currentTheme.color,
+            }}
+          ></textarea>
+          <button
+            type="submit"
+            className="btn w-full"
+            style={{
+              backgroundColor: currentTheme.color,
+              color: currentTheme.bg,
+              fontWeight: "bold",
+              fontFamily: currentTheme.font,
+            }}
+          >
+            Send Message
+          </button>
+          {status && (
+            <p className="text-center text-sm mt-2">{status}</p>
+          )}
+        </form>
+      </motion.div>
+    </div>
   );
 };
 
