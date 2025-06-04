@@ -309,7 +309,7 @@ const Contact = () => {
     emailjs
       .sendForm(
         "service_rhrpttu",
-        "template_xfjniut",
+        "template_0rmjk3n",
         form.current,
         "dGQSYEFSl0rEKk11d"
       )
